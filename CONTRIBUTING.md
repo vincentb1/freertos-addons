@@ -1,6 +1,6 @@
 # Contributing
 
-First off, thank you for thinking so highly of FreeRTOS Wrappers that you want to contribute to it! When I started this project, I never imaginged there would be so many folks interested in it. I am very happy this project has been useful to so many.
+First off, thank you for thinking so highly of FreeRTOS Wrappers that you want to contribute to it! When I started this project, I never imagined there would be so many folks interested in it. I am very happy this project has been useful to so many.
 
 ## Bug reporting
 
