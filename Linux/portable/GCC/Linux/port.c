@@ -430,7 +430,9 @@ portSTACK_TYPE *pxPortInitialiseStack( portSTACK_TYPE *pxTopOfStack, pdTASK_CODE
     int rc;
     int i;
     pthread_attr_t xThreadAttributes;
+#ifdef CPU_ZERO
     cpu_set_t cpuset;
+#endif
  
     pthread_once( &hSigSetupThread, prvSetupSignalsAndSchedulerPolicy );
 
@@ -475,13 +477,15 @@ portSTACK_TYPE *pxPortInitialiseStack( portSTACK_TYPE *pxTopOfStack, pdTASK_CODE
     }
     else 
     {
+#ifdef CPU_ZERO
         CPU_ZERO(&cpuset);
         CPU_SET(0, &cpuset);
 
         rc = pthread_setaffinity_np(pxThreads[lIndexOfLastAddedTask].Thread, 
                                     sizeof(cpu_set_t), 
                                     &cpuset);
-	    configASSERT( rc == 0 );
+	configASSERT( rc == 0 );
+#endif
         pxThreads[lIndexOfLastAddedTask].Valid = 1;
     }
 
